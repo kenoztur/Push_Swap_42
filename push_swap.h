@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   push_swap.h                                       :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/08 18:20:02 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/11 02:23:39 by esadikog        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kenoztur <kenoztur@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 18:20:02 by esadikog          #+#    #+#             */
+/*   Updated: 2026/09/12 23:32:58 by kenoztur         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -100,5 +100,5 @@ int		operation(t_op op, t_stacks stacks, t_counter *counter);
 void	simple(t_stacks stacks, t_counter *counter);
 void	medium(t_stacks stacks, t_counter *counter);
 void	complex(t_stacks stacks, t_counter *counter);
-
+int		is_sorted(t_stack *stack);
 #endif

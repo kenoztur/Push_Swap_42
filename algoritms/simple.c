@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   simple.c                                          :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/10 23:00:38 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/11 02:22:41 by esadikog        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   simple.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kenoztur <kenoztur@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/10 23:00:38 by esadikog          #+#    #+#             */
+/*   Updated: 2026/09/13 00:00:45 by kenoztur         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "../push_swap.h"
 
@@ -59,24 +59,10 @@ void	get_back(t_stacks stacks, t_counter *counter)
 		operation(O_PA, stacks, counter);
 }
 
-int	is_sorted(t_stack *a)
-{
-	int	i;
-
-	i = 0;
-	while (i < a->size - 1)
-	{
-		if (a->numbers[i] > a->numbers[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 void	simple(t_stacks stacks, t_counter *counter)
 {
 	int	min_i;
-
+//Ecmel hocam burda bu min_i ekstra mı kalmış
 	while (stacks.a->size > 2)
 	{
 		order(stacks, min_index(stacks.a), counter);
