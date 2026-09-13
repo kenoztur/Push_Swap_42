@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   swap.c                                            :+:      :+:    :+:    */
+/*   operation_swap.c                                  :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/10 21:58:57 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/10 21:59:02 by esadikog        ###   ########.fr        */
+/*   Updated: 2026/09/13 19:45:21 by esadikog        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-void	swap(t_stack *stack)
+static void	swap(t_stack *stack)
 {
 	int	repo;
 
@@ -23,24 +23,24 @@ void	swap(t_stack *stack)
 	stack->numbers[1] = repo;
 }
 
-void	sa(t_stack *a)
+void	sa(t_stack *a, int is_bench)
 {
 	swap(a);
-	ft_putendl_fd("sa", 1);
-	return ;
+	if (!is_bench)
+		ft_putendl_fd("sa", 1);
 }
 
-void	sb(t_stack *b)
+void	sb(t_stack *b, int is_bench)
 {
 	swap(b);
-	ft_putendl_fd("sb", 1);
-	return ;
+	if (!is_bench)
+		ft_putendl_fd("sb", 1);
 }
 
-void	ss(t_stacks stacks)
+void	ss(t_stacks stacks, int is_bench)
 {
 	swap(stacks.a);
 	swap(stacks.b);
-	ft_putendl_fd("ss", 1);
-	return ;
+	if (!is_bench)
+		ft_putendl_fd("ss", 1);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   fill_flags.c                                      :+:      :+:    :+:    */
+/*   parser_fill_flags.c                               :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/10 22:02:44 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/10 22:03:44 by esadikog        ###   ########.fr        */
+/*   Updated: 2026/09/13 20:03:36 by esadikog        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-char	*is_flag(char *str)
+static char	*is_flag(char *str)
 {
 	if (ft_strncmp(str, "--simple", 9) == 0)
 		return ("--simple");
@@ -38,29 +38,26 @@ t_flags	init_flags(void)
 
 int	fill_flags(t_flags *flags, char **args, int *error)
 {
-	int		i;
-	char	*response;
+	int	i;
 
 	i = 0;
 	while (args[i])
 	{
-		if ((response = is_flag(args[i++])))
+		if (!is_flag(args[i]))
+			break ;
+		if (ft_strncmp(is_flag(args[i]), "--bench", 8) == 0)
 		{
-			if (ft_strncmp(response, "--bench", 8) == 0)
-			{
-				if (flags->is_bench == 1)
-					return (*error = 1, 0);
-				flags->is_bench = 1;
-			}
-			else
-			{
-				if (flags->algo != NULL)
-					return (*error = 1, 0);
-				flags->algo = response;
-			}
-			continue ;
+			if (flags->is_bench == 1)
+				return (*error = 1, 0);
+			flags->is_bench = 1;
 		}
-		break ;
+		else
+		{
+			if (flags->algo != NULL)
+				return (*error = 1, 0);
+			flags->algo = is_flag(args[i]);
+		}
+		i++;
 	}
 	return (1);
 }

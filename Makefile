@@ -1,66 +1,46 @@
-# NAME        = push_swap
+NAME = push_swap.a
 
-# CC          = cc
-# CFLAGS      = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
+RM = rm -f
 
-# LIBFT_DIR   = libft
-# LIBFT       = $(LIBFT_DIR)/libft.a
+FILES = algorithm_complex \
+		algorithm_medium \
+		algorithm_simple \
+		bench_mode \
+		helper \
+		operation_op \
+		operation_push \
+		operation_r_rotate \
+		operation_rotate \
+		operation_swap \
+		parser_fill_flags \
+		parser_get_numbers \
+		parser_parse 
 
-# SRCS        =
+SRCS = $(addprefix ./, $(addsuffix .c, $(FILES)))
+OBJS = $(addprefix ./, $(addsuffix .o, $(FILES)))
 
-# OBJS        = $(SRCS:.c=.o)
+all: $(NAME)
+	$(CC) $(CFLAGS) main.c -o push_swap push_swap.a
 
-# INCLUDES    = -I. -I$(LIBFT_DIR)
+$(NAME): $(OBJS)
+	make -C libft all
+	cp libft/libft.a $(NAME)
+	$(AR) $(NAME) $(OBJS)
 
-# all: $(LIBFT) $(NAME)
-
-# $(LIBFT):
-# 	@make -C $(LIBFT_DIR)
-
-# $(NAME): $(OBJS) $(LIBFT)
-# 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-
-# clean:
-# 	@rm -f $(OBJS)
-# 	@make -C $(LIBFT_DIR) clean
-
-# fclean: clean
-# 	@rm -f $(NAME)
-# 	@make -C $(LIBFT_DIR) fclean
-
-# re: fclean all
-
-# .PHONY: all clean fclean re
-
-TARGET   = push_swap.a
-
-CC      = gcc
-CFLAGS  = -Wall -Wextra
-AR      = ar
-ARFLAGS = rcs
-
-rwildcard = $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter $(subst *,%,$2),$d))
-
-SRCS = $(call rwildcard,,*.c)
-OBJS = $(SRCS:.c=.o)
-
-INCLUDE_DIRS = $(sort $(dir $(SRCS)))
-CFLAGS      += $(addprefix -I,$(INCLUDE_DIRS))
-
-all: $(TARGET)
-
-$(TARGET): $(OBJS)
-	$(AR) $(ARFLAGS) $(TARGET) $(OBJS)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o : %.c push_swap.h
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
+	make -C libft clean
 
 fclean: clean
-	rm -f $(TARGET)
+	$(RM) $(NAME)
+	make -C libft fclean
 
-re: fclean all
+re: clean all
 
 .PHONY: all clean fclean re

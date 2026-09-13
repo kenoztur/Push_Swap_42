@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   get_numbers.c                                     :+:      :+:    :+:    */
+/*   parser_get_numbers.c                              :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/10 22:04:59 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/10 22:23:43 by esadikog        ###   ########.fr        */
+/*   Updated: 2026/09/13 19:45:31 by esadikog        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-int	is_inrange(long number)
-{
-	if (number < INT_MIN || number > INT_MAX)
-		return (0);
-	return (1);
-}
-
-int	get_number(char *str, int *is_error)
+static int	get_number(char *str, int *is_error)
 {
 	size_t	i;
 	long	number;
@@ -39,7 +32,7 @@ int	get_number(char *str, int *is_error)
 	while (ft_isdigit(str[i]))
 	{
 		number = number * 10 + str[i] - '0';
-		if (!is_inrange(number * sign))
+		if (number * sign > INT_MAX || number * sign < INT_MIN)
 			return (*is_error = 1, -1);
 		i++;
 	}
@@ -48,7 +41,7 @@ int	get_number(char *str, int *is_error)
 	return (number * sign);
 }
 
-int	is_dublicate(int *numbers, int *error)
+static int	is_dublicate(int *numbers, int *error)
 {
 	int	i;
 	int	j;
@@ -68,7 +61,7 @@ int	is_dublicate(int *numbers, int *error)
 	return (0);
 }
 
-int	args_counter(char **args)
+static int	args_counter(char **args)
 {
 	size_t	i;
 
@@ -95,9 +88,11 @@ int	*get_numbers(char **args, int *error)
 	{
 		number = get_number(args[i - 1], error);
 		if (*error == 1)
-			return (*error = 1, NULL);
+			return (free(numbers), NULL);
 		numbers[i++] = number;
 	}
 	is_dublicate(numbers, error);
+	if (*error)
+		return (free(numbers), NULL);
 	return (numbers);
 }
