@@ -3,10 +3,10 @@
 /*                                                       :::      ::::::::    */
 /*   bench_mode.c                                      :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
+/*   By: kenoztur <kenoztur@student.42istanbul.com.#+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/13 14:27:37 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/13 20:23:13 by esadikog        ###   ########.fr        */
+/*   Created: 2026/09/14 17:46:22 by kenoztur         #+#    #+#              */
+/*   Updated: 2026/09/14 17:46:22 by kenoztur        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 

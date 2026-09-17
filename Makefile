@@ -8,6 +8,7 @@ RM = rm -f
 FILES = algorithm_complex \
 		algorithm_medium \
 		algorithm_simple \
+		algorithm_selection_sort \
 		bench_mode \
 		helper \
 		operation_op \
@@ -17,7 +18,7 @@ FILES = algorithm_complex \
 		operation_swap \
 		parser_fill_flags \
 		parser_get_numbers \
-		parser_parse 
+		parser_parse
 
 SRCS = $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix ./, $(addsuffix .o, $(FILES)))
@@ -38,9 +39,9 @@ clean:
 	make -C libft clean
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) push_swap
 	make -C libft fclean
 
-re: clean all
+re: fclean all
 
 .PHONY: all clean fclean re

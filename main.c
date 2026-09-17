@@ -6,7 +6,7 @@
 /*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/10 22:07:10 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/13 19:50:48 by esadikog        ###   ########.fr        */
+/*   Updated: 2026/09/14 16:52:03 by esadikog        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	int			error;
 	t_parse		parsed;
 	t_counter	count;
-	t_info		info;
+	double		disorder;
 
 	if (argc < 2)
 		return (0);
@@ -26,11 +26,10 @@ int	main(int argc, char **argv)
 	if (error == 1)
 		return (ft_putendl_fd("Error", 2), 0);
 	count = init_counter();
-	info.disorder = calculate_disorder(parsed.stakcs.a);
-	info.is_bench = parsed.flags.is_bench;
-	algo(parsed.flags.algo, parsed.stakcs, &count, info);
-	if (info.is_bench)
-		bench_mode(parsed, count, info.disorder);
+	disorder = calculate_disorder(parsed.stakcs.a);
+	algo(parsed.flags.algo, parsed.stakcs, &count, disorder);
+	if (parsed.flags.is_bench)
+		bench_mode(parsed, count, disorder);
 	free_all(parsed.stakcs);
 	return (0);
 }

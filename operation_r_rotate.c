@@ -5,8 +5,8 @@
 /*                                                   +:+ +:+         +:+      */
 /*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/10 22:00:12 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/13 19:45:15 by esadikog        ###   ########.fr        */
+/*   Created: 2026/09/17 17:19:40 by esadikog         #+#    #+#              */
+/*   Updated: 2026/09/17 17:21:12 by esadikog        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,21 @@ static void	r_rotate(t_stack *stack)
 	stack->numbers[0] = repo;
 }
 
-void	rra(t_stack *a, int is_bench)
+void	rra(t_stack *a)
 {
 	r_rotate(a);
-	if (!is_bench)
-		ft_putendl_fd("rra", 1);
+	ft_putendl_fd("rra", 1);
 }
 
-void	rrb(t_stack *b, int is_bench)
+void	rrb(t_stack *b)
 {
 	r_rotate(b);
-	if (!is_bench)
-		ft_putendl_fd("rrb", 1);
+	ft_putendl_fd("rrb", 1);
 }
 
-void	rrr(t_stacks stacks, int is_bench)
+void	rrr(t_stacks stacks)
 {
 	r_rotate(stacks.a);
 	r_rotate(stacks.b);
-	if (!is_bench)
-		ft_putendl_fd("rrr", 1);
+	ft_putendl_fd("rrr", 1);
 }

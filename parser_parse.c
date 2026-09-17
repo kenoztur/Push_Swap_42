@@ -6,7 +6,7 @@
 /*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/10 22:03:55 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/13 20:08:45 by esadikog        ###   ########.fr        */
+/*   Updated: 2026/09/14 17:23:49 by esadikog        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_parse	parse(int argc, char **argv, int *error)
 	t_parse	parse;
 
 	args = get_args(argc, argv);
-	if (args == NULL)
+	if (args == NULL || args[0] == NULL)
 		return (*error = 1, parse.flags.algo = NULL, parse);
 	flags = init_flags();
 	fill_flags(&flags, args, error);

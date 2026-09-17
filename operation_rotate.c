@@ -3,10 +3,10 @@
 /*                                                       :::      ::::::::    */
 /*   operation_rotate.c                                :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
+/*   By: kenoztur <kenoztur@student.42istanbul.com.#+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/10 21:59:21 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/13 19:45:18 by esadikog        ###   ########.fr        */
+/*   Created: 2026/09/14 17:46:52 by kenoztur         #+#    #+#              */
+/*   Updated: 2026/09/14 17:46:52 by kenoztur        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,21 @@ static void	rotate(t_stack *stack)
 	stack->numbers[stack->size - 1] = repo;
 }
 
-void	ra(t_stack *a, int is_bench)
+void	ra(t_stack *a)
 {
 	rotate(a);
-	if (!is_bench)
-		ft_putendl_fd("ra", 1);
+	ft_putendl_fd("ra", 1);
 }
 
-void	rb(t_stack *b, int is_bench)
+void	rb(t_stack *b)
 {
 	rotate(b);
-	if (!is_bench)
-		ft_putendl_fd("rb", 1);
+	ft_putendl_fd("rb", 1);
 }
 
-void	rr(t_stacks stacks, int is_bench)
+void	rr(t_stacks stacks)
 {
 	rotate(stacks.a);
 	rotate(stacks.b);
-	if (!is_bench)
-		ft_putendl_fd("rr", 1);
+	ft_putendl_fd("rr", 1);
 }

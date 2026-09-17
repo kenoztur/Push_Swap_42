@@ -6,7 +6,7 @@
 /*   By: esadikog <esadikog@student.42istanbul.com.#+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/10 21:56:36 by esadikog         #+#    #+#              */
-/*   Updated: 2026/09/13 19:45:12 by esadikog        ###   ########.fr        */
+/*   Updated: 2026/09/14 14:44:11 by esadikog        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,18 @@ static void	push(t_stack *from, t_stack *to)
 	from->numbers[from->size] = 0;
 }
 
-void	pa(t_stacks stacks, int is_bench)
+void	pa(t_stacks stacks)
 {
 	if (stacks.b->size == 0)
 		return ;
 	push(stacks.b, stacks.a);
-	if (!is_bench)
-		ft_putendl_fd("pa", 1);
+	ft_putendl_fd("pa", 1);
 }
 
-void	pb(t_stacks stacks, int is_bench)
+void	pb(t_stacks stacks)
 {
 	if (stacks.a->size == 0)
 		return ;
 	push(stacks.a, stacks.b);
-	if (!is_bench)
-		ft_putendl_fd("pb", 1);
+	ft_putendl_fd("pb", 1);
 }
